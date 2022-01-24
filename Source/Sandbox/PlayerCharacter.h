@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "PlayerCharacter.generated.h"
 
+class ASword;
+
 UCLASS()
 class SANDBOX_API APlayerCharacter : public ACharacter
 {
@@ -29,5 +31,12 @@ public:
 private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
+	void LookUpRate(float AxisValue);
+	void LookRightRate(float AxisValue);
+
+	UPROPERTY(EditAnywhere) float RotationRate = 10.f;
+	UPROPERTY(EditDefaultsOnly) TSubclassOf<ASword> SwordClass;
+
+	UPROPERTY() ASword* Sword;
 
 };
