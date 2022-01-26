@@ -3,6 +3,9 @@
 
 #include "Sword.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "DrawDebugHelpers.h"
+
+#define OUT
 
 // Sets default values
 ASword::ASword()
@@ -32,3 +35,20 @@ void ASword::Tick(float DeltaTime)
 
 }
 
+void ASword::SwordAttack()
+{
+	UE_LOG(LogTemp, Warning, TEXT("SwordAttack"));
+
+	APawn* SwordOwner = Cast<APawn>(GetOwner());
+	if (SwordOwner == nullptr) return;
+	AController* SwordOwnerController = SwordOwner->GetController();
+	if (SwordOwnerController == nullptr) return;
+
+	FVector Location;
+	FRotator Rotation;
+
+	SwordOwnerController->GetPlayerViewPoint(OUT Location, OUT Rotation);
+
+
+	DrawDebugCamera(GetWorld(), Location, Rotation, 90, 2, FColor::Red, true);
+}
