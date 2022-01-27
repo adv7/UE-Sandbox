@@ -16,10 +16,6 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	Sword = GetWorld()->SpawnActor<ASword>(SwordClass);
-	Sword->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("SwordSocket"));
-	Sword->SetOwner(this);
 
 }
 
@@ -35,11 +31,4 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction(TEXT("FastAttack"), EInputEvent::IE_Pressed, this, &APlayerCharacter::Attack);
-
-}
-
-void APlayerCharacter::Attack()
-{
-	Sword->SwordAttack();
 }

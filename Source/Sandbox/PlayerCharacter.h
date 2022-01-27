@@ -28,11 +28,4 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-private:
-	void Attack();
-
-	UPROPERTY(EditDefaultsOnly) TSubclassOf<ASword> SwordClass;
-
-	UPROPERTY() ASword* Sword;
-
 };
